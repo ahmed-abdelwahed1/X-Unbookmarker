@@ -76,6 +76,8 @@
                 // The icon should change to "outline" or the tweet might be removed from DOM eventually.
                 await sleep(delay);
 
+                updateStatus("Bookmark removed.");
+
                 // Loop again
                 processQueue();
             } catch (e) {

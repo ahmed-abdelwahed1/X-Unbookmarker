@@ -8,49 +8,91 @@
   <link rel="stylesheet" href="popup.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-  <div class="background-glow"></div>
-  <div class="container glass">
-    <header>
-      <div class="logo-area">
-        <div class="icon-pulse">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
-            <path
-              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-            </path>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <!-- Simple Bookmark Icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
           </svg>
         </div>
-        <h1>Unbookmark<span class="highlight">X</span></h1>
+        <div class="brand-text">
+          <h1>X Unbookmarker</h1>
+          <span class="brand-subtitle">Auto X Posts Unbookmarker</span>
+        </div>
       </div>
     </header>
 
-    <div class="status-card">
-      <div class="status-indicator" id="statusIndicator"></div>
-      <p id="statusText">Ready to clean up.</p>
+    <!-- Activity Log Area -->
+    <div class="card terminal-card">
+      <div class="terminal-header">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span id="statusText">IDLE</span>
+        </div>
+        <div class="deleted-count">
+          Deleted: <span id="sessionCount">0</span>
+        </div>
+      </div>
+      <div class="activity-log" id="activityLog">
+        <div class="log-entry system">» [System] Ready to initialize...</div>
+      </div>
     </div>
 
-    <div class="controls-area">
-      <button id="startBtn" class="btn primary-gradient">
-        <span class="btn-content">Start Cleaning</span>
-        <div class="shine"></div>
+    <!-- Main Action -->
+    <div class="action-area">
+      <button id="toggleBtn" class="btn-main">
+        <span class="btn-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+            <path d="M8 5v14l11-7z" id="btnIconPath" />
+          </svg>
+        </span>
+        <span id="btnText">Start Cleaning</span>
       </button>
-      <button id="stopBtn" class="btn danger" disabled>Stop</button>
+      <div class="action-status" id="actionStatus">Stop Process</div>
     </div>
 
-    <div class="settings-area glass-panel">
-      <div class="setting-header">
-        <label>Speed</label>
-        <span id="delayDisplay" class="badge">1.5s</span>
+    <!-- Interval Slider -->
+    <div class="card control-card">
+      <div class="control-header">
+        <span class="control-label">PROCESS INTERVAL</span>
+        <span id="delayDisplay" class="value-badge">1.5s</span>
       </div>
-      <input type="range" id="delayInput" min="500" max="3000" step="100" value="1500">
-      <div class="range-labels">
-        <span>Fast</span>
-        <span>Slow</span>
+      <div class="slider-container">
+        <input type="range" id="delayInput" min="500" max="5000" step="100" value="1500">
+        <div class="slider-track-bg"></div>
+      </div>
+      <div class="slider-labels">
+        <span>FAST (0.5S)</span>
+        <span>STABLE (5S)</span>
       </div>
     </div>
+
+    <!-- Footer Stats -->
+    <footer class="app-footer">
+      <div class="stat-item">
+        <span class="stat-label">SESSION</span>
+        <span class="stat-value" id="sessionStat">0</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-label">LIFETIME</span>
+        <span class="stat-value" id="lifetimeStat">0</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-label">ERRORS</span>
+        <span class="stat-value" id="errorStat">0</span>
+      </div>
+    </footer>
   </div>
   <script src="popup.js"></script>
 </body>
