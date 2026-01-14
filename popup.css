@@ -1,0 +1,235 @@
+:root {
+  --bg-color: #000000;
+  --surface-color: #16181c;
+  --border-color: #2f3336;
+  --text-primary: #e7e9ea;
+  --text-secondary: #71767b;
+  --accent-color: #1d9bf0;
+  --danger-color: #f4212e;
+}
+
+body {
+  width: 320px;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+/* Remove glow */
+.background-glow {
+  display: none;
+}
+
+.container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header */
+header {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-bottom: 4px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.highlight {
+  color: var(--text-primary);
+  /* Keep it monochrome or subtle */
+}
+
+/* Status Card - Minimal */
+.status-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-indicator {
+  width: 6px;
+  height: 6px;
+  background-color: var(--text-secondary);
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.status-indicator.active {
+  background-color: #00ba7c;
+  box-shadow: none;
+  /* No glow */
+  animation: none;
+}
+
+#statusText {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Controls */
+.controls-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  /* Minimal radius */
+  padding: 10px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  transition: background-color 0.1s;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary-gradient {
+  background: var(--accent-color);
+  color: white;
+  box-shadow: none;
+}
+
+.primary-gradient:hover:not(:disabled) {
+  background-color: #1a8cd8;
+  transform: none;
+  box-shadow: none;
+}
+
+.danger {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--danger-color);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: rgba(244, 33, 46, 0.1);
+  border-color: var(--danger-color);
+}
+
+/* Settings - Clean Alignment */
+.settings-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  background: transparent;
+  border-radius: 0;
+}
+
+.setting-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting-header label {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.badge {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--text-primary);
+  font-family: monospace;
+}
+
+/* Slider */
+input[type=range] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+  margin: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  cursor: pointer;
+  margin-top: -5px;
+  box-shadow: none;
+  border: 2px solid var(--bg-color);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: -4px;
+}
+
+/* Remove decorative elements */
+.shine,
+.icon-pulse svg {
+  display: none;
+  /* Or simplify icon */
+}
+
+/* Re-add simple static icon */
+.icon-pulse {
+  width: 20px;
+  height: 20px;
+  background-color: var(--text-primary);
+  mask: url('icon16.png') no-repeat center;
+  -webkit-mask: url('icon16.png') no-repeat center;
+}
+
+/* Actually, let's just show the SVG cleanly without pulse */
+.icon-pulse svg {
+  display: block;
+  fill: var(--text-primary);
+}
