@@ -18,12 +18,12 @@ jobs:
 
       - name: Zip Extension
         run: |
-          zip -r x-unbookmarker-v${{ github.ref_name }}.zip manifest.json src assets
+          zip -r x-unbookmarker-${{ github.ref_name }}.zip manifest.json src assets
           
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: x-unbookmarker-v${{ github.ref_name }}.zip
+          files: x-unbookmarker-${{ github.ref_name }}.zip
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
