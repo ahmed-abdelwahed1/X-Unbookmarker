@@ -1,6 +1,6 @@
 {
   "name": "x-unbookmarker",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "**X-Unbookmarker** is a Chrome Extension designed to help you manage your digital footprint on X (formerly Twitter) by automating the process of removing bookmarks.",
   "main": "index.js",
   "scripts": {
